@@ -9,6 +9,7 @@ export const NoteList = ({noteList, setNoteList}) => {
         }
     }
 
+    //JSX
     return(
         <ul>
             {noteList.map((note) => <NoteCard key={note.id} note={note} removeNoteFromList={removeNoteFromList} />)}            

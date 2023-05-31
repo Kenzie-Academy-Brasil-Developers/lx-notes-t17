@@ -4,7 +4,7 @@ import { NoteNumbers } from "./NoteNumbers";
 export const ListSection = ({ noteList, setNoteList }) => {
    //Javascript
 
-   //JSX
+   
    // condicao ? resposta do if : resposta else
    // condicao ? caso seja verdadeiro : caso seja falso
 
@@ -15,7 +15,8 @@ export const ListSection = ({ noteList, setNoteList }) => {
             return <p>Cadastre a sua primeira nota</p>
         }
    */
-  
+
+   //JSX
    return (
       <section>
          <h1>Lista de notas</h1>
@@ -23,7 +24,7 @@ export const ListSection = ({ noteList, setNoteList }) => {
          {noteList.length > 0 ? (
             <NoteList noteList={noteList} setNoteList={setNoteList} />
          ) : (
-            <p>Cadastre-se a sua primeira nota</p>
+            <p>Cadastre a sua primeira nota</p>
          )}
       </section>
    );
