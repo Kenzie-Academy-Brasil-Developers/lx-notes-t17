@@ -1,24 +1,27 @@
 import { useState } from "react";
 import { StyledInput, StyledTextArea } from "../../styles/form";
-import { StyledTitleTwoSmall } from "../../styles/typography";
+import { v4 as uuidv4 } from 'uuid';
+import { StyledButton } from "../../styles/button";
 
-export const Form = () => {
+export const Form = ({setNoteList}) => {
    const [title, setTitle] = useState("");
    const [message, setMessage] = useState("");
 
+   const addNoteToList = () => {
+      const newNote = { id: uuidv4() ,title, message };
+      setNoteList((noteList) => [...noteList, newNote]);
+   }
+
    const submit = (e) => {
       e.preventDefault();
-      console.log({ title, message });
+      addNoteToList();
       setTitle("");
       setMessage("");
    };
 
-   // insere um evento de onChange capturando o valor de e.target.value
-   // espelha o input, colocando a variável de estado como value
-
    return (
       <form onSubmit={submit}>
-         <StyledTitleTwoSmall>Cadastre a sua nota</StyledTitleTwoSmall>
+         <h2>Cadastre a sua nota</h2>
          <StyledInput            
             type="text"
             placeholder="Título da nota"
@@ -32,7 +35,7 @@ export const Form = () => {
             onChange={(e) => setMessage(e.target.value)}
             required
          ></StyledTextArea>
-         <button type="submit">Criar nota</button>
+         <StyledButton buttonSize="big" fullWidth={true} type="submit">Criar nota</StyledButton>
       </form>
    );
 };
