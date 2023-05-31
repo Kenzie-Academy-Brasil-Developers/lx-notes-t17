@@ -2,13 +2,20 @@ import { useState } from "react";
 import { StyledInput, StyledTextArea } from "../../styles/form";
 import { StyledTitleTwoSmall } from "../../styles/typography";
 
-export const Form = () => {
+import { v4 as uuidv4 } from 'uuid';
+
+export const Form = ({setNoteList}) => {
    const [title, setTitle] = useState("");
    const [message, setMessage] = useState("");
 
+   const addNoteToList = () => {
+      const newNote ={id: uuidv4() ,title, message};
+      setNoteList((noteList) => [...noteList, newNote]);
+   }
+
    const submit = (e) => {
       e.preventDefault();
-      console.log({ title, message });
+      addNoteToList();
       setTitle("");
       setMessage("");
    };
