@@ -4,6 +4,7 @@ export const HeadlineStyles = css`
     font-family: var(--Font-Primary);
     font-size: ${({fontSize}) => fontSize === "big" ? "2rem" : "1.375rem"};
     font-weight: 700;    
+    color: var(--Color-Black);
 
     /*
     ${({fontSize}) => {
@@ -36,4 +37,16 @@ export const StyledHeadline2 = styled.h2`
 
 export const StyledHeadline3 = styled.h3`
     ${HeadlineStyles};
+`
+
+export const StyledParagraph = styled.p`
+    font-family: var(--Font-Primary);
+    font-size: 1rem;
+    font-weight: ${({fontWeight}) => fontWeight === "bold" ? 700 : 400};
+    color: var(--Color-Black);
+    line-height: 1.6;
+
+    strong{
+        font-weight: 700;
+    }
 `
