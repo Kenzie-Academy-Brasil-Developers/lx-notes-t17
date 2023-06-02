@@ -1,9 +1,19 @@
 import { NoteCard } from "./NoteCard"
+import { StyledNoteList } from "./style";
 
-export const NoteList = () => {
+export const NoteList = ({noteList, setNoteList}) => {
+
+    //Javascript
+    const removeNoteFromList = (noteId) => {   
+        if(confirm("Você deseja mesmo excluir essa nota?")){     
+            setNoteList((noteList) => noteList.filter(note => note.id !== noteId));
+        }
+    }
+
+    //JSX
     return(
-        <ul>
-            <NoteCard />
-        </ul>
+        <StyledNoteList>
+            {noteList.map((note) => <NoteCard key={note.id} note={note} removeNoteFromList={removeNoteFromList} />)}            
+        </StyledNoteList>
     )
 }

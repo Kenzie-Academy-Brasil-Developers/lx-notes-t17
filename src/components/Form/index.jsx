@@ -1,24 +1,30 @@
 import { useState } from "react";
 import { StyledInput, StyledTextArea } from "../../styles/form";
-import { StyledTitleTwoSmall } from "../../styles/typography";
+import { v4 as uuidv4 } from 'uuid';
+import { StyledButton } from "../../styles/button";
+import { StyledHeadline2 } from "../../styles/typography";
+import { StyledForm } from "./style";
 
-export const Form = () => {
+export const Form = ({setNoteList}) => {
    const [title, setTitle] = useState("");
    const [message, setMessage] = useState("");
+   //const [select, setSelect] = useState("");
+
+   const addNoteToList = () => {
+      const newNote = { id: uuidv4() ,title, message };
+      setNoteList((noteList) => [...noteList, newNote]);
+   }
 
    const submit = (e) => {
       e.preventDefault();
-      console.log({ title, message });
+      addNoteToList();
       setTitle("");
       setMessage("");
    };
 
-   // insere um evento de onChange capturando o valor de e.target.value
-   // espelha o input, colocando a variável de estado como value
-
    return (
-      <form onSubmit={submit}>
-         <StyledTitleTwoSmall>Cadastre a sua nota</StyledTitleTwoSmall>
+      <StyledForm onSubmit={submit}>
+         <StyledHeadline2>Cadastre a sua nota</StyledHeadline2>
          <StyledInput            
             type="text"
             placeholder="Título da nota"
@@ -32,7 +38,11 @@ export const Form = () => {
             onChange={(e) => setMessage(e.target.value)}
             required
          ></StyledTextArea>
-         <button type="submit">Criar nota</button>
-      </form>
+         { /* <select value={select} onChange={(e) => setSelect(e.target.value)} required>
+            <option value="">Selecione um valor feliz</option>
+            <option value="felicidade">Felicidade</option>
+         </select> */ }
+         <StyledButton buttonSize="big" fullWidth={true} type="submit">Criar nota</StyledButton>        
+      </StyledForm>
    );
 };

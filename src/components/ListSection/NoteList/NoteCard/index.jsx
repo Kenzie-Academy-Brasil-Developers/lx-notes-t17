@@ -1,11 +1,13 @@
+import { StyledButton } from "../../../../styles/button"
+import { StyledHeadline3, StyledParagraph } from "../../../../styles/typography"
 import { StyledNoteCard } from "./style"
 
-export const NoteCard = () => {
+export const NoteCard = ({note, removeNoteFromList}) => {
     return(
         <StyledNoteCard>
-            <h3>Texto</h3>
-            <p></p>
-            <button>Excluir</button>
+            <StyledHeadline3>{note.title}</StyledHeadline3>
+            <StyledParagraph>{note.message}</StyledParagraph>
+            <StyledButton onClick={() => removeNoteFromList(note.id)}>Excluir</StyledButton>
         </StyledNoteCard>
     )
 }
