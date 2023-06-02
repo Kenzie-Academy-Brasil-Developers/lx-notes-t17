@@ -21,7 +21,9 @@ function App() {
             <StyledContainer>
                {/* <StyledHeadline1 fontSize="big">Teste</StyledHeadline1> */}
                <StyledFlexBox>
+                  <div className="formBox">
                   <Form setNoteList={setNoteList} />
+                  </div>                 
                   <ListSection noteList={noteList} setNoteList={setNoteList} />
                </StyledFlexBox>
             </StyledContainer>

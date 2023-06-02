@@ -10,6 +10,9 @@ export const StyledForm = styled.form`
    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
    padding: 30px;
 
+   width: 100%;
+   max-width: 550px;
+
    h2{
     margin-bottom: 10px;
    }

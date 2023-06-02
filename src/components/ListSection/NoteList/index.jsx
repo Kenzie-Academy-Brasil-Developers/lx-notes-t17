@@ -1,4 +1,5 @@
 import { NoteCard } from "./NoteCard"
+import { StyledNoteList } from "./style";
 
 export const NoteList = ({noteList, setNoteList}) => {
 
@@ -11,8 +12,8 @@ export const NoteList = ({noteList, setNoteList}) => {
 
     //JSX
     return(
-        <ul>
+        <StyledNoteList>
             {noteList.map((note) => <NoteCard key={note.id} note={note} removeNoteFromList={removeNoteFromList} />)}            
-        </ul>
+        </StyledNoteList>
     )
 }
